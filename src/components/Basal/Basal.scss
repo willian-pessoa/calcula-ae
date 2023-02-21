@@ -1,4 +1,4 @@
-.basal{
+.basal {
   width: 100vw;
   height: 100vh;
   background-image: url("/assets/blob_background.svg");
@@ -7,8 +7,58 @@
   align-items: center;
   justify-content: space-between;
 
-  h1{
+  h1 {
     margin: 10px 0;
     color: $color2;
   }
+
+  .basal__calc {
+    width: 100%;
+    height: calc(3 * 4.7rem);
+    position: relative;
+  }
+}
+
+input {
+  all: unset;
+  width: clamp(40vmin, 300px, 40vmax);
+  height: 4.5rem;
+  background-color: $color2;
+  font-size: 2rem;
+  position: absolute;
+  z-index: 3;
+}
+
+.input-left {
+ // border-radius: 0 30% 30% 0;
+ border-top-right-radius: 20% 50%;
+ border-bottom-right-radius: 20% 50%;
+  left: -100%;
+  top: 0;
+
+  &:nth-child(2){
+    top: 4.8rem
+  }
+}
+
+
+.active-left {
+  left: 50.5%;
+  transition: all 1.2s ease-in;
+}
+
+.input-right{
+  border-top-left-radius: 20% 50%;
+ border-bottom-left-radius: 20% 50%;
+  right: -100%;
+  top: 0;
+
+  &:nth-child(4){
+    top: 4.8rem
+  }
+}
+
+.active-right{
+  right: 50.5%;
+  transition: all 1.2s ease-in;
 }
