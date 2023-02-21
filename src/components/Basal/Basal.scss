@@ -14,51 +14,82 @@
 
   .basal__calc {
     width: 100%;
-    height: calc(3 * 4.7rem);
+    height: calc(4 * 4.7rem);
     position: relative;
   }
 }
 
 input {
   all: unset;
-  width: clamp(40vmin, 300px, 40vmax);
+  width: 275px;
   height: 4.5rem;
   background-color: $color2;
   font-size: 2rem;
   position: absolute;
   z-index: 3;
+  text-align: center;
 }
 
 .input-left {
- // border-radius: 0 30% 30% 0;
- border-top-right-radius: 20% 50%;
- border-bottom-right-radius: 20% 50%;
+  // border-radius: 0 30% 30% 0;
+  border-top-right-radius: 20% 50%;
+  border-bottom-right-radius: 20% 50%;
   left: -100%;
   top: 0;
 
-  &:nth-child(2){
-    top: 4.8rem
+  &:nth-child(2) {
+    top: 4.8rem;
   }
 }
-
 
 .active-left {
   left: 50.5%;
   transition: all 1.2s ease-in;
 }
 
-.input-right{
+.input-right {
   border-top-left-radius: 20% 50%;
- border-bottom-left-radius: 20% 50%;
+  border-bottom-left-radius: 20% 50%;
   right: -100%;
   top: 0;
 
-  &:nth-child(4){
-    top: 4.8rem
+  &:nth-child(4) {
+    top: 4.8rem;
   }
 }
 
-.active-right{
+.active-right {
   right: 50.5%;
   transition: all 1.2s ease-in;
+}
+
+.input-activity {
+  top: calc(2 * 4.8rem);
+  width: 550px;
+  left: calc(50% - 275px);
+  border-top-left-radius: 10% 50%;
+  border-bottom-left-radius: 10% 50%;
+  border-top-right-radius: 10% 50%;
+  border-bottom-right-radius: 10% 50%;
+}
+
+.btn-calcular{
+  all: unset;
+  width: 200px;
+  height: 4.5rem;
+  background-color: $color2;
+  font-size: 2rem;
+  position: absolute;
+  top: calc(3 * 4.8rem);
+  left: -100%;
+  z-index: 3;
+  text-align: center;
+  border-top-left-radius: 20% 50%;
+  border-bottom-left-radius: 20% 50%;
+  border-top-right-radius: 20% 50%;
+  border-bottom-right-radius: 20% 50%;
+}
+
+.btn-active{
+  left: calc(50% - 100px);
 }
