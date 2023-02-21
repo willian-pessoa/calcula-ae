@@ -1,0 +1,14 @@
+.basal{
+  width: 100vw;
+  height: 100vh;
+  background-image: url("/assets/blob_background.svg");
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  h1{
+    margin: 10px 0;
+    color: $color2;
+  }
+}
