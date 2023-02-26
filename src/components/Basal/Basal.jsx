@@ -3,6 +3,8 @@
 import React from "react";
 import { useState, useEffect, useCallback } from "react";
 
+import { BsGenderMale, BsGenderFemale } from "react-icons/bs";
+
 import "./Basal.scss";
 
 //Default user Infos
@@ -56,6 +58,8 @@ const Basal = () => {
     handleShowInput("inputL1");
   }, [handleShowInput]);
 
+  console.log(infos);
+
   return (
     <section className="basal">
       <h1>Calcule a sua Taxa de Metabolismo Basal</h1>
@@ -64,7 +68,9 @@ const Basal = () => {
           onClick={() => handleShowInput("inputL2")}
           active={active.inputL1}
           label="Gênero"
-        ></InputBasalLeft>
+        >
+          <Genero setInfos={setInfos} genero={infos.genero} />
+        </InputBasalLeft>
         <InputBasalLeft
           onClick={() => handleShowInput("inputL3")}
           active={active.inputL2}
@@ -101,7 +107,8 @@ const Basal = () => {
   );
 };
 
-const InputBasalLeft = ({label, active, children, ...props }) => {
+// COMPONENTES MENORES, DIVS DE INPUT
+const InputBasalLeft = ({ label, active, children, ...props }) => {
   return (
     <div
       {...props}
@@ -113,7 +120,7 @@ const InputBasalLeft = ({label, active, children, ...props }) => {
   );
 };
 
-const InputBasalRight = ({label, active, children, ...props }) => {
+const InputBasalRight = ({ label, active, children, ...props }) => {
   return (
     <div
       {...props}
@@ -125,7 +132,7 @@ const InputBasalRight = ({label, active, children, ...props }) => {
   );
 };
 
-const InputActivity = ({label, active, children, ...props }) => {
+const InputActivity = ({ label, active, children, ...props }) => {
   return (
     <div
       {...props}
@@ -154,6 +161,30 @@ const Result = ({ active }) => {
   return (
     <div className={`result result-${active ? "active" : "inactive"}`}>
       <h3>A sua Taxa Metabolica Basal é:</h3>
+    </div>
+  );
+};
+
+//COMPONENTES DE INPUT
+const Genero = ({ setInfos, genero }) => {
+
+  const handleInputGender = (gender) => {
+    setInfos((prev)=>({
+      ...prev,
+      genero: gender
+    }))
+  }
+
+  return (
+    <div className="input__gender">
+      <div className={`input__gender-option ${genero === "M" ? "gender-active" : "gender-inactive"}`} onClick={()=>handleInputGender("M")}>
+        <BsGenderMale className="icon" />
+        Masculino
+      </div>
+      <div className={`input__gender-option ${genero === "F" ? "gender-active" : "gender-inactive"}`}  onClick={()=>handleInputGender("F")}>
+        <BsGenderFemale className="icon" />
+        Feminino
+      </div>
     </div>
   );
 };

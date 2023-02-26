@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: space-between;
 
-  @include mobile{
+  @include mobile {
     background-image: none;
   }
 
@@ -24,10 +24,7 @@
   }
 }
 
-input{
- // all: unset
-}
-
+//DIV INPUTS
 .input {
   width: 275px;
   height: 4.5rem;
@@ -37,22 +34,23 @@ input{
   z-index: 3;
   text-align: center;
   color: $background;
+  display: flex;
 
-  .input__label-left{
+  .input__label-left {
     position: absolute;
     bottom: 0;
     right: 15%;
     color: $background;
   }
 
-  .input__label-right{
+  .input__label-right {
     position: absolute;
     bottom: 0;
     left: 15%;
     color: $background;
   }
 
-  .input__label-activity{
+  .input__label-activity {
     position: absolute;
     bottom: 0;
     right: 35%;
@@ -61,7 +59,6 @@ input{
 }
 
 .input-left {
-  // border-radius: 0 30% 30% 0;
   border-top-right-radius: 20% 50%;
   border-bottom-right-radius: 20% 50%;
   left: -100%;
@@ -111,7 +108,7 @@ input{
   transition: all 1.2s ease-in-out;
 }
 
-.btn-calcular{
+.btn-calcular {
   all: unset;
   width: 200px;
   height: 4.5rem;
@@ -131,12 +128,12 @@ input{
   transition: all 1.2s ease-in-out;
 }
 
-.btn-active{
+.btn-active {
   right: calc(50% - 100px);
   transition: all 1.2s ease-in-out;
 }
 
-.result{
+.result {
   width: 100%;
   height: 100%;
   display: flex;
@@ -145,7 +142,46 @@ input{
   opacity: 0%;
 }
 
-.result-active{
+.result-active {
   opacity: 100%;
   transition: all 1.2s ease-in-out;
+}
+
+// INPUTS
+.input__gender {
+  height: 100%;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .input__gender-option {
+    margin: 3px 0;
+    width: 80%;
+    font-size: 1.2rem;
+    color: $background;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $background;
+    }
+  }
+
+  .gender-active {
+    border: 1px solid $background;
+  }
+
+  .gender-inactive {
+    border: 1px solid $color2;
+  }
+}
+
+.icon {
+  fill: $background;
+  margin-right: 6px;
 }
