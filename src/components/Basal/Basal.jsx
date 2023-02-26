@@ -5,6 +5,23 @@ import { useState, useEffect, useCallback } from "react";
 
 import "./Basal.scss";
 
+//Default user Infos
+const NIVEL_ATIVIDADE = {
+  sedentarismo: 1.2,
+  pouco: 1.375,
+  moderado: 1.55,
+  muito: 1.725,
+  extremo: 1.9,
+};
+
+const DEFAULT = {
+  genero: "", // M -> Masculino F -> Feminino
+  peso: 0, // kg
+  altura: 0, // cm
+  idade: 0, // anos
+  atividade: 0 // de acordo com NIVEL_ATIVIDADE
+};
+
 const Basal = () => {
   const [active, setActive] = useState({
     inputL1: false,
@@ -15,6 +32,7 @@ const Basal = () => {
     calcular: false,
     result: false,
   });
+  const [infos, setInfos] = useState(DEFAULT);
 
   const handleShowInput = useCallback((inputLabel) => {
     setActive((prev) => ({
@@ -37,8 +55,6 @@ const Basal = () => {
   useEffect(() => {
     handleShowInput("inputL1");
   }, [handleShowInput]);
-
-  console.log(active);
 
   return (
     <section className="basal">
@@ -82,28 +98,28 @@ const Basal = () => {
 
 const InputBasalLeft = ({ active, ...props }) => {
   return (
-    <input
+    <div
       {...props}
-      className={`input-left ${active ? "active" : "inactive"}-left`}
-    ></input>
+      className={`input input-left ${active ? "active" : "inactive"}-left`}
+    ></div>
   );
 };
 
 const InputBasalRight = ({ active, ...props }) => {
   return (
-    <input
+    <div
       {...props}
-      className={`input-right ${active ? "active" : "inactive"}-right`}
-    ></input>
+      className={`input input-right ${active ? "active" : "inactive"}-right`}
+    ></div>
   );
 };
 
 const InputActivity = ({ active, ...props }) => {
   return (
-    <input
+    <div
       {...props}
-      className={`input-activity activity-${active ? "active" : "inactive"}`}
-    ></input>
+      className={`input input-activity activity-${active ? "active" : "inactive"}`}
+    ></div>
   );
 };
 
