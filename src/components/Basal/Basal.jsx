@@ -19,7 +19,7 @@ const DEFAULT = {
   peso: 0, // kg
   altura: 0, // cm
   idade: 0, // anos
-  atividade: 0 // de acordo com NIVEL_ATIVIDADE
+  atividade: 0, // de acordo com NIVEL_ATIVIDADE
 };
 
 const Basal = () => {
@@ -63,23 +63,28 @@ const Basal = () => {
         <InputBasalLeft
           onClick={() => handleShowInput("inputL2")}
           active={active.inputL1}
-        />
+          label="Gênero"
+        ></InputBasalLeft>
         <InputBasalLeft
           onClick={() => handleShowInput("inputL3")}
           active={active.inputL2}
-        />
+          label="Peso em Kg"
+        ></InputBasalLeft>
         <InputBasalRight
           onClick={() => handleShowInput("inputL4")}
           active={active.inputL3}
-        />
+          label="Altura em cm"
+        ></InputBasalRight>
         <InputBasalRight
           onClick={() => handleShowInput("inputL5")}
           active={active.inputL4}
-        />
+          label="Idade"
+        ></InputBasalRight>
         <InputActivity
           onClick={() => handleShowInput("calcular")}
           active={active.inputL5}
-        />
+          label="Nível de Atividade Fisica"
+        ></InputActivity>
         <Calcular
           onClick={() => {
             resetShowInput();
@@ -96,30 +101,41 @@ const Basal = () => {
   );
 };
 
-const InputBasalLeft = ({ active, ...props }) => {
+const InputBasalLeft = ({label, active, children, ...props }) => {
   return (
     <div
       {...props}
       className={`input input-left ${active ? "active" : "inactive"}-left`}
-    ></div>
+    >
+      {children}
+      <span className="input__label-left">{label}</span>
+    </div>
   );
 };
 
-const InputBasalRight = ({ active, ...props }) => {
+const InputBasalRight = ({label, active, children, ...props }) => {
   return (
     <div
       {...props}
       className={`input input-right ${active ? "active" : "inactive"}-right`}
-    ></div>
+    >
+      {children}
+      <span className="input__label-right">{label}</span>
+    </div>
   );
 };
 
-const InputActivity = ({ active, ...props }) => {
+const InputActivity = ({label, active, children, ...props }) => {
   return (
     <div
       {...props}
-      className={`input input-activity activity-${active ? "active" : "inactive"}`}
-    ></div>
+      className={`input input-activity activity-${
+        active ? "active" : "inactive"
+      }`}
+    >
+      {children}
+      <span className="input__label-activity">{label}</span>
+    </div>
   );
 };
 

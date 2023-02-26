@@ -24,16 +24,40 @@
   }
 }
 
+input{
+ // all: unset
+}
+
 .input {
-  all: unset;
   width: 275px;
   height: 4.5rem;
   background-color: $color2;
-  font-size: 2rem;
+  font-size: 1rem;
   position: absolute;
   z-index: 3;
   text-align: center;
   color: $background;
+
+  .input__label-left{
+    position: absolute;
+    bottom: 0;
+    right: 15%;
+    color: $background;
+  }
+
+  .input__label-right{
+    position: absolute;
+    bottom: 0;
+    left: 15%;
+    color: $background;
+  }
+
+  .input__label-activity{
+    position: absolute;
+    bottom: 0;
+    right: 35%;
+    color: $background;
+  }
 }
 
 .input-left {
