@@ -181,7 +181,26 @@
   }
 }
 
+.input__peso{
+  height: 100%;
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  input{
+    width: 70%;
+  }
+}
+
 .icon {
   fill: $background;
   margin-right: 6px;
+}
+
+input{
+  all: unset;
+  color: $background;
+  font-size: 1.6rem;
 }

@@ -2,6 +2,7 @@
 
 import React from "react";
 import { useState, useEffect, useCallback } from "react";
+import { render } from "react-dom";
 
 import { BsGenderMale, BsGenderFemale } from "react-icons/bs";
 
@@ -27,7 +28,7 @@ const DEFAULT = {
 const Basal = () => {
   const [active, setActive] = useState({
     inputL1: false,
-    inputL2: false,
+    inputL2: !false,
     inputL3: false,
     inputL4: false,
     inputL5: false,
@@ -75,22 +76,30 @@ const Basal = () => {
           onClick={() => handleShowInput("inputL3")}
           active={active.inputL2}
           label="Peso em Kg"
-        ></InputBasalLeft>
+        >
+          <Peso setInfos={setInfos} peso={infos.peso} />
+        </InputBasalLeft>
         <InputBasalRight
           onClick={() => handleShowInput("inputL4")}
           active={active.inputL3}
           label="Altura em cm"
-        ></InputBasalRight>
+        >
+          <Altura setInfos={setInfos} />
+        </InputBasalRight>
         <InputBasalRight
           onClick={() => handleShowInput("inputL5")}
           active={active.inputL4}
           label="Idade"
-        ></InputBasalRight>
+        >
+          <Idade setInfos={setInfos} />
+        </InputBasalRight>
         <InputActivity
           onClick={() => handleShowInput("calcular")}
           active={active.inputL5}
           label="Nível de Atividade Fisica"
-        ></InputActivity>
+        >
+          <IntensidadeFisica setInfos={setInfos} />
+        </InputActivity>
         <Calcular
           onClick={() => {
             resetShowInput();
@@ -167,26 +176,69 @@ const Result = ({ active }) => {
 
 //COMPONENTES DE INPUT
 const Genero = ({ setInfos, genero }) => {
-
   const handleInputGender = (gender) => {
-    setInfos((prev)=>({
+    setInfos((prev) => ({
       ...prev,
-      genero: gender
-    }))
-  }
-
+      genero: gender,
+    }));
+  };
   return (
     <div className="input__gender">
-      <div className={`input__gender-option ${genero === "M" ? "gender-active" : "gender-inactive"}`} onClick={()=>handleInputGender("M")}>
+      <div
+        className={`input__gender-option ${
+          genero === "M" ? "gender-active" : "gender-inactive"
+        }`}
+        onClick={() => handleInputGender("M")}
+      >
         <BsGenderMale className="icon" />
         Masculino
       </div>
-      <div className={`input__gender-option ${genero === "F" ? "gender-active" : "gender-inactive"}`}  onClick={()=>handleInputGender("F")}>
+      <div
+        className={`input__gender-option ${
+          genero === "F" ? "gender-active" : "gender-inactive"
+        }`}
+        onClick={() => handleInputGender("F")}
+      >
         <BsGenderFemale className="icon" />
         Feminino
       </div>
     </div>
   );
+};
+
+const Peso = ({ setInfos, peso }) => {
+  const handleInputPeso = (e) => {
+    e.preventDefault()
+    let tempPeso = Number(e.target.value)
+    if (tempPeso < 1) {
+      tempPeso = 1
+    } else if (tempPeso > 500){
+      tempPeso = 500
+    }
+
+    setInfos((prev) => ({
+      ...prev,
+      peso: tempPeso,
+    }));
+  };
+
+  return (
+    <div className="input__peso">
+      <input type="number" min={0} max={500} value={peso} onChange={(e) => handleInputPeso(e)} />
+    </div>
+  );
+};
+
+const Altura = ({ setInfos }) => {
+  return <div className="input__altura"></div>;
+};
+
+const Idade = ({ setInfos }) => {
+  return <div className="input__idade"></div>;
+};
+
+const IntensidadeFisica = ({ setInfos }) => {
+  return <div className="input__intesidade"></div>;
 };
 
 export default Basal;
