@@ -29,9 +29,9 @@ const Basal = () => {
   const [active, setActive] = useState({
     inputL1: false,
     inputL2: !false,
-    inputL3: false,
-    inputL4: false,
-    inputL5: false,
+    inputL3: !false,
+    inputL4: !false,
+    inputL5: !false,
     calcular: false,
     result: false,
   });
@@ -84,14 +84,14 @@ const Basal = () => {
           active={active.inputL3}
           label="Altura em cm"
         >
-          <Altura setInfos={setInfos} />
+          <Altura setInfos={setInfos} altura={infos.altura} />
         </InputBasalRight>
         <InputBasalRight
           onClick={() => handleShowInput("inputL5")}
           active={active.inputL4}
           label="Idade"
         >
-          <Idade setInfos={setInfos} />
+          <Idade setInfos={setInfos} idade={infos.idade} />
         </InputBasalRight>
         <InputActivity
           onClick={() => handleShowInput("calcular")}
@@ -208,13 +208,9 @@ const Genero = ({ setInfos, genero }) => {
 
 const Peso = ({ setInfos, peso }) => {
   const handleInputPeso = (e) => {
-    e.preventDefault()
-    let tempPeso = Number(e.target.value)
-    if (tempPeso < 1) {
-      tempPeso = 1
-    } else if (tempPeso > 500){
-      tempPeso = 500
-    }
+    e.preventDefault();
+    let tempPeso = Number(e.target.value.replace(".", ""));
+    if (tempPeso < 1 || tempPeso > 500) return
 
     setInfos((prev) => ({
       ...prev,
@@ -224,13 +220,40 @@ const Peso = ({ setInfos, peso }) => {
 
   return (
     <div className="input__peso">
-      <input type="number" min={0} max={500} value={peso} onChange={(e) => handleInputPeso(e)} />
+      <input
+        type="number"
+        min={0}
+        max={500}
+        value={peso}
+        onChange={(e) => handleInputPeso(e)}
+      />
     </div>
   );
 };
 
-const Altura = ({ setInfos }) => {
-  return <div className="input__altura"></div>;
+const Altura = ({ setInfos, altura }) => {
+  const handleInputAltura = (e) => {
+    e.preventDefault();
+    let tempAltura = Number(e.target.value.replace(".", ""));
+    if (tempAltura < 1 || tempAltura > 300) return 
+
+    setInfos((prev) => ({
+      ...prev,
+      altura: tempAltura,
+    }));
+  };
+
+  return (
+    <div className="input__altura">
+      <input
+        type="number"
+        min={0}
+        max={300}
+        value={altura}
+        onChange={(e) => handleInputAltura(e)}
+      />
+    </div>
+  );
 };
 
 const Idade = ({ setInfos }) => {
