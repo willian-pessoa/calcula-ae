@@ -101,6 +101,9 @@
   border-top-right-radius: 10% 50%;
   border-bottom-right-radius: 10% 50%;
   transition: all 1.2s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .activity-active {
@@ -206,6 +209,38 @@
   top: 25%;
 }
 
+.input__idade{
+  height: 100%;
+  width: 60%;
+  position: absolute;
+  right: 0;
+  top: 25%;
+}
+
+.input__intensidade{
+  padding: 3px;
+  height: 100%;
+  width: 80%;
+  display: flex;
+  align-items: center;
+
+  select{
+    width: 100%;
+    font-size: 1.3rem;
+    background-color: $color2;
+    color: $background;
+    border: 1px solid $color2;
+    border-bottom: 2px solid;
+    cursor: pointer;
+    margin-bottom: 14px;
+
+    option{
+      width: 100%;
+      font-size: 1rem;
+    }
+  }
+}
+
 .icon {
   fill: $background;
   margin-right: 6px;
@@ -214,6 +249,10 @@
 input{
   all: unset;
   color: $background;
-  font-size: 1.6rem;
+  font-size: 2rem;
   cursor: pointer;
+
+  &::placeholder{
+    color: $background;
+  }
 }

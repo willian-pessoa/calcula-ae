@@ -14,7 +14,7 @@ const NIVEL_ATIVIDADE = {
   pouco: 1.375,
   moderado: 1.55,
   muito: 1.725,
-  extremo: 1.9,
+  intenso: 1.9,
 };
 
 const DEFAULT = {
@@ -22,20 +22,33 @@ const DEFAULT = {
   peso: 0, // kg
   altura: 0, // cm
   idade: 0, // anos
-  atividade: 0, // de acordo com NIVEL_ATIVIDADE
+  intensidade: 0, // de acordo com NIVEL_ATIVIDADE
 };
 
 const Basal = () => {
   const [active, setActive] = useState({
     inputL1: false,
-    inputL2: !false,
-    inputL3: !false,
-    inputL4: !false,
-    inputL5: !false,
+    inputL2: false,
+    inputL3: false,
+    inputL4: false,
+    inputL5: false,
     calcular: false,
     result: false,
   });
   const [infos, setInfos] = useState(DEFAULT);
+  const [TMB, setTMB] = useState(0);
+
+  const computeTMB = () => {
+    const { genero, peso, altura, idade, intensidade } = infos;
+    let tempTMB = 0;
+    if (genero === "M") {
+      tempTMB = 66.5 + 13.75 * peso + 5.003 * altura - 6.75 * idade;
+    } else {
+      tempTMB = 655.1 + 9.563 * peso + 1.85 * altura - 4.676 * idade;
+    }
+    tempTMB = Math.floor(tempTMB * intensidade);
+    setTMB(tempTMB);
+  };
 
   const handleShowInput = useCallback((inputLabel) => {
     setActive((prev) => ({
@@ -58,8 +71,6 @@ const Basal = () => {
   useEffect(() => {
     handleShowInput("inputL1");
   }, [handleShowInput]);
-
-  console.log(infos);
 
   return (
     <section className="basal">
@@ -102,6 +113,7 @@ const Basal = () => {
         </InputActivity>
         <Calcular
           onClick={() => {
+            computeTMB();
             resetShowInput();
             handleShowInput("result");
           }}
@@ -109,7 +121,7 @@ const Basal = () => {
         >
           Calcular
         </Calcular>
-        <Result active={active.result} />
+        <Result active={active.result} TMB={TMB} />
       </div>
       <div className="basal__footer">b</div>
     </section>
@@ -166,10 +178,10 @@ const Calcular = ({ active, children, ...props }) => {
   );
 };
 
-const Result = ({ active }) => {
+const Result = ({ active, TMB }) => {
   return (
     <div className={`result result-${active ? "active" : "inactive"}`}>
-      <h3>A sua Taxa Metabolica Basal é:</h3>
+      <h3>A sua Taxa Metabolica Basal é: {TMB}</h3>
     </div>
   );
 };
@@ -209,8 +221,8 @@ const Genero = ({ setInfos, genero }) => {
 const Peso = ({ setInfos, peso }) => {
   const handleInputPeso = (e) => {
     e.preventDefault();
-    let tempPeso = Number(e.target.value.replace(".", ""));
-    if (tempPeso < 1 || tempPeso > 500) return
+    let tempPeso = parseInt(e.target.value.replace(".", ""));
+    if (tempPeso < 1 || tempPeso > 500) return;
 
     setInfos((prev) => ({
       ...prev,
@@ -224,7 +236,8 @@ const Peso = ({ setInfos, peso }) => {
         type="number"
         min={0}
         max={500}
-        value={peso}
+        placeholder="kg"
+        value={peso === 0 ? "" : peso}
         onChange={(e) => handleInputPeso(e)}
       />
     </div>
@@ -235,7 +248,7 @@ const Altura = ({ setInfos, altura }) => {
   const handleInputAltura = (e) => {
     e.preventDefault();
     let tempAltura = Number(e.target.value.replace(".", ""));
-    if (tempAltura < 1 || tempAltura > 300) return 
+    if (tempAltura < 1 || tempAltura > 300) return;
 
     setInfos((prev) => ({
       ...prev,
@@ -249,19 +262,72 @@ const Altura = ({ setInfos, altura }) => {
         type="number"
         min={0}
         max={300}
-        value={altura}
+        placeholder="cm"
+        value={altura === 0 ? "" : altura}
         onChange={(e) => handleInputAltura(e)}
       />
     </div>
   );
 };
 
-const Idade = ({ setInfos }) => {
-  return <div className="input__idade"></div>;
+const Idade = ({ setInfos, idade }) => {
+  const handleInputIdade = (e) => {
+    e.preventDefault();
+    let tempIdade = Number(e.target.value.replace(".", ""));
+    if (tempIdade < 1 || Idade > 200) return;
+
+    setInfos((prev) => ({
+      ...prev,
+      idade: tempIdade,
+    }));
+  };
+  return (
+    <div className="input__idade">
+      <input
+        type="number"
+        min={0}
+        max={300}
+        placeholder={0}
+        value={idade === 0 ? "" : idade}
+        onChange={(e) => handleInputIdade(e)}
+      />
+    </div>
+  );
 };
 
 const IntensidadeFisica = ({ setInfos }) => {
-  return <div className="input__intesidade"></div>;
+  const handleInputIntensidade = (e) => {
+    e.preventDefault();
+    setInfos((prev) => ({
+      ...prev,
+      intensidade: NIVEL_ATIVIDADE[e.target.value],
+    }));
+  };
+
+  return (
+    <div className="input__intensidade">
+      <select
+        onChange={(e) => handleInputIntensidade(e)}
+        name="intensidade-fisica"
+        id="intensidade-fisica"
+      >
+        <option value="sedentarismo">Pouco ou nenhum exercício</option>
+        <option value="pouco">
+          Exercicio ou algum esporte leve de 1 a 3 dias/semana{" "}
+        </option>
+        <option value="moderado">
+          Exercício ou esporte moderado de 3 a 5 dias/semana
+        </option>
+        <option value="muito">
+          Exercício ou esporte pesado de 6 a 7 dias/semana
+        </option>
+        <option value="intenso">
+          Exercício ou esporte muito pesado e trabalho físico intenso todos os
+          dias
+        </option>
+      </select>
+    </div>
+  );
 };
 
 export default Basal;
