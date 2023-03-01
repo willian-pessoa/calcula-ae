@@ -5,13 +5,13 @@ $color2: #7db4b5;
 $color3: #ff7f50;
 
 @mixin tablet {
-  @media (max-width: 996px) {
+  @media (max-width: 840px) {
     @content;
   }
 }
 
 @mixin mobile {
-  @media (max-width: 710px) {
+  @media (max-width: 566px) {
     @content;
   }
 }

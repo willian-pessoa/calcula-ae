@@ -7,7 +7,7 @@
   align-items: center;
   justify-content: space-between;
 
-  @include mobile {
+  @include tablet {
     background-image: none;
   }
 
@@ -21,6 +21,12 @@
     width: 100%;
     height: calc(4 * 4.7rem);
     position: relative;
+
+    @include mobile {
+      display: flex;
+      flex-direction: column;
+      height: 85%;
+    }
   }
 }
 
@@ -35,6 +41,11 @@
   text-align: center;
   color: $background;
   display: flex;
+
+  @include mobile {
+    position: relative;
+    margin: 1.5% 0;
+  }
 
   .input__label-left {
     position: absolute;
@@ -67,12 +78,20 @@
 
   &:nth-child(2) {
     top: 4.8rem;
+
+    @include mobile {
+      top: 0;
+    }
   }
 }
 
 .active-left {
   left: 50.5%;
   transition: all 1.2s ease-in-out;
+
+  @include mobile{
+    left: 10%;
+  }
 }
 
 .input-right {
@@ -84,12 +103,20 @@
 
   &:nth-child(4) {
     top: 4.8rem;
+
+    @include mobile {
+      top: 0;
+    }
   }
 }
 
 .active-right {
   right: 50.5%;
   transition: all 1.2s ease-in-out;
+
+  @include mobile{
+    right: -10%;
+  }
 }
 
 .input-activity {
@@ -104,11 +131,20 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @include mobile{
+    width: 95%;
+    top: 0;
+  }
 }
 
 .activity-active {
   left: calc(50% - 275px);
   transition: all 1.2s ease-in-out;
+
+  @include mobile{
+    left: 2%;
+  }
 }
 
 .btn-calcular {
@@ -129,11 +165,20 @@
   color: $background;
   cursor: pointer;
   transition: all 1.2s ease-in-out;
+
+  @include mobile{
+    position: relative;
+    top: 0;
+  }
 }
 
 .btn-active {
   right: calc(50% - 100px);
   transition: all 1.2s ease-in-out;
+
+  @include mobile{
+   right: -20%;
+  }
 }
 
 .result {
@@ -143,6 +188,12 @@
   align-items: center;
   justify-content: center;
   opacity: 0%;
+
+  @include mobile {
+    position: absolute;
+    padding: 3%;
+    text-align: center;
+  }
 
   h3{
     font-size: 1.5rem;
