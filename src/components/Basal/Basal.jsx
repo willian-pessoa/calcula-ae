@@ -123,7 +123,11 @@ const Basal = () => {
         </Calcular>
         <Result active={active.result} TMB={TMB} />
       </div>
-      <div className="basal__footer">b</div>
+      <div className="basal__footer">
+        <a href="#artigo-tmb">
+          <button>Mais Informações</button>
+        </a>
+      </div>
     </section>
   );
 };
