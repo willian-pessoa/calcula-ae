@@ -5,6 +5,7 @@ import { useState, useEffect, useCallback } from "react";
 import { render } from "react-dom";
 
 import { BsGenderMale, BsGenderFemale } from "react-icons/bs";
+import { IoIosArrowDropdown } from "react-icons/io";
 
 import "./Basal.scss";
 
@@ -125,7 +126,9 @@ const Basal = () => {
       </div>
       <div className="basal__footer">
         <a href="#section-tmb">
-          <button>Mais Informações</button>
+          <button className="btn-more-info">
+            <IoIosArrowDropdown className="btn-icon-drop" /> Mais Informações
+          </button>
         </a>
       </div>
     </section>
@@ -186,8 +189,14 @@ const Result = ({ active, TMB }) => {
   return (
     <div className={`result result-${active ? "active" : "inactive"}`}>
       <h3>A sua Taxa Metabolica Basal é: {TMB} calorias</h3>
-      <h2>Para perda de peso recomenda-se ingestão de: {TMB - 500} a {TMB - 300} calorias</h2>
-      <h2>Para ganho de peso recomenda-se ingestão de: {TMB + 300} a {TMB + 500} calorias</h2>
+      <h2>
+        Para perda de peso recomenda-se ingestão de: {TMB - 500} a {TMB - 300}{" "}
+        calorias
+      </h2>
+      <h2>
+        Para ganho de peso recomenda-se ingestão de: {TMB + 300} a {TMB + 500}{" "}
+        calorias
+      </h2>
     </div>
   );
 };

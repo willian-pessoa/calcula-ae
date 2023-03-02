@@ -29,6 +29,10 @@
       height: 85%;
     }
   }
+
+  .basal__footer {
+    width: 100%;
+  }
 }
 
 //DIV INPUTS
@@ -90,7 +94,7 @@
   left: 50.5%;
   transition: all 1.2s ease-in-out;
 
-  @include mobile{
+  @include mobile {
     left: 10%;
   }
 }
@@ -115,7 +119,7 @@
   right: 50.5%;
   transition: all 1.2s ease-in-out;
 
-  @include mobile{
+  @include mobile {
     right: -10%;
   }
 }
@@ -133,7 +137,7 @@
   justify-content: center;
   align-items: center;
 
-  @include mobile{
+  @include mobile {
     width: 95%;
     top: 0;
   }
@@ -143,7 +147,7 @@
   left: calc(50% - 275px);
   transition: all 1.2s ease-in-out;
 
-  @include mobile{
+  @include mobile {
     left: 2%;
   }
 }
@@ -167,7 +171,7 @@
   cursor: pointer;
   transition: all 1.2s ease-in-out;
 
-  @include mobile{
+  @include mobile {
     position: relative;
     top: 0;
   }
@@ -177,8 +181,8 @@
   right: calc(50% - 100px);
   transition: all 1.2s ease-in-out;
 
-  @include mobile{
-   right: -20%;
+  @include mobile {
+    right: -20%;
   }
 }
 
@@ -197,11 +201,11 @@
     text-align: center;
   }
 
-  h3{
+  h3 {
     font-size: 1.5rem;
     color: $color3;
   }
-  h2{
+  h2 {
     margin-top: 1rem;
   }
 }
@@ -245,19 +249,19 @@
   }
 }
 
-.input__peso{
+.input__peso {
   height: 100%;
   width: 60%;
   display: flex;
   align-items: center;
   justify-content: center;
 
-  input{
+  input {
     width: 70%;
   }
 }
 
-.input__altura{
+.input__altura {
   height: 100%;
   width: 60%;
   position: absolute;
@@ -265,7 +269,7 @@
   top: 25%;
 }
 
-.input__idade{
+.input__idade {
   height: 100%;
   width: 60%;
   position: absolute;
@@ -273,14 +277,14 @@
   top: 25%;
 }
 
-.input__intensidade{
+.input__intensidade {
   padding: 3px;
   height: 100%;
   width: 80%;
   display: flex;
   align-items: center;
 
-  select{
+  select {
     width: 100%;
     font-size: 1.3rem;
     background-color: $color2;
@@ -290,7 +294,7 @@
     cursor: pointer;
     margin-bottom: 14px;
 
-    option{
+    option {
       width: 100%;
       font-size: 1rem;
     }
@@ -302,13 +306,43 @@
   margin-right: 6px;
 }
 
-input{
+input {
   all: unset;
   color: $background;
   font-size: 2rem;
   cursor: pointer;
 
-  &::placeholder{
+  &::placeholder {
     color: $background;
+  }
+}
+
+.btn-more-info {
+  all: unset;
+  margin: 0 8px 8px 8px;
+  background-color: $background;
+  font-size: 1rem;
+  padding: 2px 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover{
+    background-color: $color2;
+    color: $background;
+
+    .btn-icon-drop {
+      fill: $background;
+    }
+  }
+
+  @include tablet {
+    background-color: $color2;
+    color: $background;
+
+    .btn-icon-drop {
+      fill: $background;
+    }
   }
 }
