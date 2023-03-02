@@ -124,7 +124,7 @@ const Basal = () => {
         <Result active={active.result} TMB={TMB} />
       </div>
       <div className="basal__footer">
-        <a href="#artigo-tmb">
+        <a href="#section-tmb">
           <button>Mais Informações</button>
         </a>
       </div>
