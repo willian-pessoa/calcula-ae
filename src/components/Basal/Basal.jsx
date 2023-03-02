@@ -237,7 +237,7 @@ const Peso = ({ setInfos, peso }) => {
   const handleInputPeso = (e) => {
     e.preventDefault();
     let tempPeso = parseInt(e.target.value.replace(".", ""));
-    if (tempPeso < 1 || tempPeso > 500) return;
+    if (tempPeso < 1 || tempPeso > 1000) return;
 
     setInfos((prev) => ({
       ...prev,
@@ -263,7 +263,7 @@ const Altura = ({ setInfos, altura }) => {
   const handleInputAltura = (e) => {
     e.preventDefault();
     let tempAltura = Number(e.target.value.replace(".", ""));
-    if (tempAltura < 1 || tempAltura > 300) return;
+    if (tempAltura < 0 || tempAltura > 1000) return;
 
     setInfos((prev) => ({
       ...prev,
@@ -289,7 +289,7 @@ const Idade = ({ setInfos, idade }) => {
   const handleInputIdade = (e) => {
     e.preventDefault();
     let tempIdade = Number(e.target.value.replace(".", ""));
-    if (tempIdade < 1 || Idade > 200) return;
+    if (tempIdade < 0 || tempIdade > 200) return;
 
     setInfos((prev) => ({
       ...prev,
