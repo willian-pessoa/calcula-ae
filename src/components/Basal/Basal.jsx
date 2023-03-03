@@ -102,28 +102,28 @@ const Basal = () => {
           <Genero setInfos={setInfos} genero={infos.genero} />
         </InputBasalLeft>
         <InputBasalLeft
-          onClick={() => handleShowInput("inputL3")}
+          onFocus={() => handleShowInput("inputL3")}
           active={active.inputL2}
           label="Peso em Kg"
         >
           <Peso setInfos={setInfos} peso={infos.peso} />
         </InputBasalLeft>
         <InputBasalRight
-          onClick={() => handleShowInput("inputL4")}
+          onFocus={() => handleShowInput("inputL4")}
           active={active.inputL3}
           label="Altura em cm"
         >
           <Altura setInfos={setInfos} altura={infos.altura} />
         </InputBasalRight>
         <InputBasalRight
-          onClick={() => handleShowInput("inputL5")}
+          onFocus={() => handleShowInput("inputL5")}
           active={active.inputL4}
           label="Idade"
         >
           <Idade setInfos={setInfos} idade={infos.idade} />
         </InputBasalRight>
         <InputActivity
-          onClick={() => handleShowInput("calcular")}
+          onFocus={() => handleShowInput("calcular")}
           active={active.inputL5}
           label="Nível de Atividade Fisica"
         >
