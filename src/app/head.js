@@ -9,6 +9,7 @@ export default function Head() {
         name="keywords"
         content="calculadora, taxa, basal, calculadora taxa basal, calculadora taxa metabolica basal, método harris-benedict, calculadora calorias, calculadora gasto calorico"
       />
+      <meta name="google-site-verification" content="lALi_FaP-gqd452oXO5dNr97av5ExCKUNdqUQA1EC5Q" />
       <link rel="icon" href="/favicon.ico" />
     </>
   )
