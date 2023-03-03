@@ -201,11 +201,11 @@ const Result = ({ active, TMB, reset }) => {
     <div className={`result result-${active ? "active" : "inactive"}`}>
       <h3>A sua Taxa Metabolica Basal é: {TMB} calorias</h3>
       <h2>
-        Para perda de peso recomenda-se ingestão de: {TMB - 500} a {TMB - 300}{" "}
+        Para perda de peso recomenda-se a ingestão de: {TMB - 500} a {TMB - 300}{" "}
         calorias
       </h2>
       <h2>
-        Para ganho de peso recomenda-se ingestão de: {TMB + 300} a {TMB + 500}{" "}
+        Para ganho de peso recomenda-se a ingestão de: {TMB + 300} a {TMB + 500}{" "}
         calorias
       </h2>
       <button onClick={reset} className="btn-reset">

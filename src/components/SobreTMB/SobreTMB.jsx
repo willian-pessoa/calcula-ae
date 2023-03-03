@@ -51,9 +51,7 @@ const SobreTMB = () => {
               &nbsp;LeetCode
             </a>
           </li>
-          <li>
-            @Willian Pessoa
-          </li>
+          <li>@Willian Pessoa</li>
         </ul>
       </footer>
     </section>
