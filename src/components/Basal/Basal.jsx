@@ -2,7 +2,6 @@
 
 import React from "react";
 import { useState, useEffect, useCallback } from "react";
-import { render } from "react-dom";
 
 import { BsGenderMale, BsGenderFemale } from "react-icons/bs";
 import { IoIosArrowDropdown } from "react-icons/io";
@@ -138,11 +137,10 @@ const Basal = () => {
       </div>
       <div className="basal__footer">
         <a href="#section-tmb">
-          <button className="btn">
+          <button className="btn-more-info">
             <IoIosArrowDropdown className="btn-icon-drop" /> Mais Informações
           </button>
         </a>
-        <span>@Willian Pessoa</span>
       </div>
     </section>
   );
@@ -210,7 +208,7 @@ const Result = ({ active, TMB, reset }) => {
         Para ganho de peso recomenda-se ingestão de: {TMB + 300} a {TMB + 500}{" "}
         calorias
       </h2>
-      <button onClick={reset} className="btn">
+      <button onClick={reset} className="btn-reset">
         Calcular Denovo
       </button>
     </div>

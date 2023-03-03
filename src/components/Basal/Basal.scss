@@ -34,17 +34,6 @@
     width: 100%;
     display: flex;
     justify-content: space-between;
-
-    span{
-      margin-right: 1.5rem;
-      font-size: 0.8rem;
-      vertical-align:bottom;
-      padding-top: 10px;
-
-      @include mobile {
-        display: none;
-      }
-    }
   }
 }
 
@@ -329,7 +318,7 @@ input {
   }
 }
 
-.btn {
+.btn-more-info{
   all: unset;
   margin: 0 8px 8px 8px;
   background-color: $background;
@@ -339,6 +328,7 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 
   &:hover{
     background-color: $color2;
@@ -352,6 +342,38 @@ input {
   @include tablet {
     background-color: $color2;
     color: $background;
+
+    .btn-icon-drop {
+      fill: $background;
+    }
+  }
+}
+
+.btn-reset{
+  all: unset;
+  margin: 0 8px 8px 8px;
+  background-color: $color2;
+  color: $background;
+  border: 1.5px solid $color2;
+  font-size: 1.5rem;
+  padding: 2px 4px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &:hover{
+    background-color: $background;
+    color: $color2;
+
+    .btn-icon-drop {
+      fill: $background;
+    }
+  }
+
+  @include tablet {
+    font-size: 1rem;
 
     .btn-icon-drop {
       fill: $background;
