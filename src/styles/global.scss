@@ -23,8 +23,17 @@ a {
   all: unset;
 }
 
-
 a,
 button {
   cursor: pointer;
+}
+
+body::-webkit-scrollbar {
+  width: 1rem;               /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: $color2;    /* color of the scroll thumb */
+  border-radius: 10px;       /* roundness of the scroll thumb */
+  border: 3px solid $background;  /* creates padding around scroll thumb */
 }

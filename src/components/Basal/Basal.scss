@@ -22,6 +22,7 @@
     width: 100%;
     height: calc(4 * 4.7rem);
     position: relative;
+    overflow: hidden;
 
     @include mobile {
       display: flex;
@@ -196,6 +197,7 @@
   align-items: center;
   justify-content: center;
   opacity: 0%;
+  overflow: hidden;
 
   @include mobile {
     position: absolute;
