@@ -69,6 +69,18 @@ const Basal = () => {
     });
   };
 
+  const handleResetState = () => {
+    setActive({
+      inputL1: !false,
+      inputL2: false,
+      inputL3: false,
+      inputL4: false,
+      inputL5: false,
+      calcular: false,
+    });
+    setInfos(DEFAULT)
+  }
+
   useEffect(() => {
     handleShowInput("inputL1");
   }, [handleShowInput]);
@@ -122,14 +134,15 @@ const Basal = () => {
         >
           Calcular
         </Calcular>
-        <Result active={active.result} TMB={TMB} />
+        <Result active={active.result} TMB={TMB} reset={handleResetState} />
       </div>
       <div className="basal__footer">
         <a href="#section-tmb">
-          <button className="btn-more-info">
+          <button className="btn">
             <IoIosArrowDropdown className="btn-icon-drop" /> Mais Informações
           </button>
         </a>
+        <span>@Willian Pessoa</span>
       </div>
     </section>
   );
@@ -185,7 +198,7 @@ const Calcular = ({ active, children, ...props }) => {
   );
 };
 
-const Result = ({ active, TMB }) => {
+const Result = ({ active, TMB, reset }) => {
   return (
     <div className={`result result-${active ? "active" : "inactive"}`}>
       <h3>A sua Taxa Metabolica Basal é: {TMB} calorias</h3>
@@ -197,6 +210,9 @@ const Result = ({ active, TMB }) => {
         Para ganho de peso recomenda-se ingestão de: {TMB + 300} a {TMB + 500}{" "}
         calorias
       </h2>
+      <button onClick={reset} className="btn">
+        Calcular Denovo
+      </button>
     </div>
   );
 };
