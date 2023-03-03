@@ -22,7 +22,7 @@ Instalação:
 
 Para iniciar o App:
 
-`npm start`
+`npm run dev`
 
 ## Reflection
 
