@@ -40,6 +40,10 @@ const Basal = () => {
 
   const computeTMB = () => {
     const { genero, peso, altura, idade, intensidade } = infos;
+    if (!genero || !peso || !altura || !idade || !intensidade) {
+      window.alert("Por favor preencha todo os campos do formulário corretamente.")
+      return
+    }
     let tempTMB = 0;
     if (genero === "M") {
       tempTMB = 66.5 + 13.75 * peso + 5.003 * altura - 6.75 * idade;
@@ -48,6 +52,8 @@ const Basal = () => {
     }
     tempTMB = Math.floor(tempTMB * intensidade);
     setTMB(tempTMB);
+    resetShowInput();
+    handleShowInput("result");
   };
 
   const handleShowInput = useCallback((inputLabel) => {
@@ -125,9 +131,7 @@ const Basal = () => {
         </InputActivity>
         <Calcular
           onClick={() => {
-            computeTMB();
-            resetShowInput();
-            handleShowInput("result");
+            computeTMB()
           }}
           active={active.calcular}
         >
@@ -339,7 +343,9 @@ const IntensidadeFisica = ({ setInfos }) => {
         onChange={(e) => handleInputIntensidade(e)}
         name="intensidade-fisica"
         id="intensidade-fisica"
+        required
       >
+        <option value="">Selecione seu nível de atividade física</option>
         <option value="sedentarismo">Pouco ou nenhum exercício</option>
         <option value="pouco">
           Exercicio ou algum esporte leve de 1 a 3 dias/semana{" "}
