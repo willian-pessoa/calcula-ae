@@ -1,4 +1,4 @@
-import { AnalyticsWrapper } from './components/analytics';
+import { AnalyticsWrapper } from './analytics.jsx';
 
 import "../styles/global.scss"
 import { Roboto } from "@next/font/google"
